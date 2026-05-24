@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Reading & Writing M.5 – Lesson 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+Thai:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Baloo 2','Noto Sans Thai',sans-serif;background:#0a0a18;width:100vw;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
+.slide-area{flex:1;position:relative;overflow:hidden;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;padding:30px 52px;animation:fadeIn 0.4s ease;overflow-y:auto;}
+.slide.active{display:flex;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* BOTTOM BAR */
+.bottom-bar{background:rgba(8,8,20,0.97);border-top:1px solid rgba(255,255,255,0.08);padding:11px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
+.nav-info{color:rgba(255,255,255,0.5);font-size:0.82rem;font-weight:700;letter-spacing:1px;min-width:160px;}
+.dots-row{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:center;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.18);border:none;cursor:pointer;transition:all 0.25s;}
+.dot.active{background:#fff;transform:scale(1.6);}
+.btns{display:flex;gap:10px;}
+.nb{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);color:#fff;font-family:'Baloo 2',sans-serif;font-size:0.9rem;font-weight:700;padding:9px 22px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+.nb:hover{background:rgba(255,255,255,0.18);}
+.nb:disabled{opacity:0.2;cursor:not-allowed;}
+.nb.pri{background:#fff;color:#0a0a18;}
+.nb.pri:hover{background:#e2e8f0;}
+
+/* ══ S0 COVER ══ */
+#s0{background:linear-gradient(140deg,#0d2a4a,#091524 45%,#110d2e);}
+#s0::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 65% 25%,rgba(56,189,248,0.2) 0%,transparent 55%),radial-gradient(ellipse at 20% 80%,rgba(99,102,241,0.22) 0%,transparent 50%);}
+.cover-wrap{position:relative;text-align:center;}
+.cover-badge{display:inline-block;background:rgba(255,255,255,0.09);border:1.5px solid rgba(255,255,255,0.24);color:rgba(255,255,255,0.85);font-size:1rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:9px 26px;border-radius:100px;margin-bottom:22px;}
+.cover-title{font-family:'Fredoka One',cursive;font-size:clamp(3.2rem,7vw,5.8rem);color:#fff;line-height:1.05;text-shadow:0 4px 32px rgba(0,0,0,0.5);margin-bottom:12px;}
+.cover-title span{color:#38bdf8;}
+.cover-sub{font-size:clamp(1.1rem,2.2vw,1.6rem);color:rgba(255,255,255,0.65);font-weight:600;margin-bottom:30px;}
+.cover-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cpill{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:10px 22px;border-radius:100px;font-size:clamp(0.9rem,1.5vw,1.15rem);font-weight:700;}
+
+/* ══ S1 OBJECTIVES ══ */
+#s1{background:linear-gradient(140deg,#0c1f3a,#0a1628);}
+#s1::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(56,189,248,0.14) 0%,transparent 50%);}
+.obj-wrap{position:relative;width:100%;max-width:1150px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;}
+.slide-label{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3.8vw,3rem);color:#38bdf8;margin-bottom:6px;line-height:1.15;}
+.slide-label-th{font-size:clamp(1rem,1.6vw,1.2rem);color:rgba(255,255,255,0.65);font-weight:600;margin-bottom:20px;}
+.obj-item{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.11);border-radius:14px;padding:14px 18px;margin-bottom:10px;}
+.obj-num{width:34px;height:34px;border-radius:50%;background:#38bdf8;color:#0a1628;display:flex;align-items:center;justify-content:center;font-size:0.95rem;font-weight:800;flex-shrink:0;margin-top:2px;}
+.obj-text{font-size:clamp(1rem,1.7vw,1.2rem);color:#fff;font-weight:700;line-height:1.5;}
+.obj-text-th{font-size:clamp(0.85rem,1.3vw,1rem);color:rgba(255,255,255,0.55);font-weight:600;margin-top:3px;}
+.tl-head{font-size:0.82rem;font-weight:800;letter-spacing:2px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:14px;}
+.tl-item{display:flex;gap:14px;align-items:stretch;padding-bottom:13px;}
+.tl-left{display:flex;flex-direction:column;align-items:center;}
+.tl-dot{width:13px;height:13px;border-radius:50%;background:#38bdf8;flex-shrink:0;margin-top:4px;}
+.tl-line{width:2px;flex:1;background:rgba(56,189,248,0.25);margin:4px 0;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-time{font-size:0.82rem;font-weight:800;letter-spacing:1px;color:#38bdf8;text-transform:uppercase;}
+.tl-desc{font-size:clamp(0.92rem,1.5vw,1.1rem);color:#fff;font-weight:700;margin-top:2px;}
+.tl-desc-th{font-size:clamp(0.78rem,1.2vw,0.95rem);color:rgba(255,255,255,0.45);font-weight:600;}
+
+/* ══ S2 WARM-UP QUESTION ══ */
+#s2{background:linear-gradient(140deg,#131040,#0d0b2e);}
+.wu-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(167,139,250,0.18);border:2px solid rgba(167,139,250,0.35);color:#c4b5fd;padding:8px 24px;border-radius:100px;font-size:clamp(0.9rem,1.5vw,1.1rem);font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
+.wu-wrap{width:100%;max-width:1050px;text-align:center;}
+.wu-title{font-family:'Fredoka One',cursive;font-size:clamp(2.4rem,5.5vw,4.2rem);color:#fff;line-height:1.1;margin-bottom:14px;}
+.wu-title span{color:#a78bfa;}
+.wu-question{background:rgba(167,139,250,0.1);border:2px dashed rgba(167,139,250,0.3);border-radius:20px;padding:18px 30px;margin:0 auto 22px;max-width:820px;}
+.wu-q-en{font-size:clamp(1.25rem,2.5vw,1.85rem);color:#fff;font-weight:700;margin-bottom:6px;}
+.wu-q-th{font-size:clamp(1rem,1.7vw,1.25rem);color:rgba(255,255,255,0.65);font-weight:600;}
+.wu-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+.wu-chip{background:rgba(255,255,255,0.09);border:1.5px solid rgba(255,255,255,0.18);color:#fff;padding:11px 20px;border-radius:12px;font-size:clamp(0.95rem,1.6vw,1.15rem);font-weight:700;cursor:pointer;transition:all 0.2s;}
+.wu-chip:hover,.wu-chip.sel{background:rgba(167,139,250,0.3);border-color:#a78bfa;transform:scale(1.06);}
+
+/* ══ S3 WARM-UP GAME (Word Snap) ══ */
+#s3{background:linear-gradient(140deg,#0a1f10,#061409);}
+.snap-wrap{width:100%;max-width:1100px;}
+.snap-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,4vw,3.2rem);color:#4ade80;text-align:center;margin-bottom:6px;}
+.snap-sub{text-align:center;font-size:clamp(1rem,1.7vw,1.2rem);color:rgba(255,255,255,0.65);font-weight:600;margin-bottom:20px;}
+.snap-instructions{display:flex;gap:16px;justify-content:center;margin-bottom:22px;flex-wrap:wrap;}
+.snap-step{background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);border-radius:14px;padding:12px 18px;display:flex;align-items:center;gap:10px;max-width:280px;}
+.snap-step-num{width:32px;height:32px;border-radius:50%;background:#4ade80;color:#061409;font-size:0.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.snap-step-text{font-size:clamp(0.88rem,1.4vw,1.05rem);color:#fff;font-weight:700;line-height:1.4;}
+.snap-cards-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+.snap-card{background:rgba(255,255,255,0.07);border:2px solid rgba(74,222,128,0.25);border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;transition:all 0.22s;user-select:none;}
+.snap-card:hover{background:rgba(74,222,128,0.18);border-color:#4ade80;transform:translateY(-3px);}
+.snap-card.selected{background:rgba(74,222,128,0.3);border-color:#4ade80;}
+.snap-card.matched{background:rgba(74,222,128,0.5);border-color:#22c55e;pointer-events:none;}
+.snap-card.wrong-flash{background:rgba(248,113,113,0.35);border-color:#f87171;}
+.snap-word{font-size:clamp(1rem,1.8vw,1.3rem);font-weight:800;color:#fff;}
+.snap-score-row{text-align:center;margin-top:14px;}
+.snap-score-txt{font-family:'Fredoka One',cursive;font-size:clamp(1.2rem,2.5vw,2rem);color:#fbbf24;}
+
+/* ══ S4 WHY MATTERS ══ */
+#s4{background:linear-gradient(140deg,#0d2035,#091828);}
+.why-wrap{width:100%;max-width:1150px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;}
+.why-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3.8vw,3rem);color:#34d399;line-height:1.1;margin-bottom:8px;}
+.why-title-th{font-size:clamp(0.95rem,1.5vw,1.15rem);color:rgba(255,255,255,0.5);font-weight:600;margin-bottom:16px;}
+.why-item{display:flex;gap:14px;align-items:flex-start;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);border-radius:14px;padding:13px 16px;margin-bottom:9px;}
+.why-icon{font-size:1.6rem;flex-shrink:0;}
+.why-en{font-size:clamp(1rem,1.6vw,1.2rem);color:#fff;font-weight:700;}
+.why-th{font-size:clamp(0.82rem,1.3vw,1rem);color:rgba(255,255,255,0.55);font-weight:600;margin-top:2px;}
+.prob-card{background:rgba(251,191,36,0.07);border:2px solid rgba(251,191,36,0.22);border-radius:20px;padding:20px 24px;}
+.prob-head{font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,2.8vw,2.2rem);color:#fbbf24;margin-bottom:14px;}
+.prob-item{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.prob-item:last-child{border-bottom:none;}
+.prob-x{width:26px;height:26px;border-radius:50%;background:rgba(251,191,36,0.2);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;color:#fbbf24;flex-shrink:0;}
+.prob-text{font-size:clamp(0.9rem,1.5vw,1.1rem);color:#fff;font-weight:700;}
+.prob-th{font-size:clamp(0.78rem,1.2vw,0.95rem);color:rgba(255,255,255,0.5);font-weight:600;}
+.strategy-box{background:rgba(52,211,153,0.1);border:1.5px solid rgba(52,211,153,0.28);border-radius:14px;padding:14px 18px;margin-top:14px;}
+.strat-lbl{font-size:0.8rem;font-weight:800;letter-spacing:1px;color:#34d399;text-transform:uppercase;margin-bottom:6px;}
+.strat-text{font-size:clamp(0.92rem,1.5vw,1.1rem);color:#fff;font-weight:700;line-height:1.9;}
+.strat-th{font-size:clamp(0.78rem,1.2vw,0.95rem);color:rgba(255,255,255,0.5);font-weight:600;margin-top:4px;}
+
+/* ══ S5 READING PASSAGE ══ */
+#s5{background:linear-gradient(140deg,#0d1f30,#091524);}
+.passage-wrap{width:100%;max-width:1150px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;align-items:start;}
+.pass-title{font-family:'Fredoka One',cursive;font-size:clamp(1.6rem,3.2vw,2.5rem);color:#38bdf8;margin-bottom:8px;}
+.pass-subtitle{font-size:clamp(0.9rem,1.5vw,1.1rem);color:rgba(255,255,255,0.55);font-weight:600;margin-bottom:14px;}
+.pass-box{background:rgba(255,255,255,0.07);border:2px solid rgba(56,189,248,0.28);border-radius:18px;padding:22px 26px;margin-bottom:16px;}
+.pass-text{font-size:clamp(1.1rem,1.9vw,1.35rem);color:#fff;font-weight:600;line-height:1.95;}
+.pass-text strong{color:#38bdf8;}
+.pass-tip{background:rgba(56,189,248,0.08);border-left:4px solid #38bdf8;border-radius:0 12px 12px 0;padding:12px 18px;}
+.tip-head{font-size:0.8rem;font-weight:800;letter-spacing:2px;color:#38bdf8;text-transform:uppercase;margin-bottom:8px;}
+.tip-item{font-size:clamp(0.88rem,1.4vw,1.05rem);color:#e0f2fe;font-weight:600;line-height:1.9;}
+.qa-head{font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,2.8vw,2.1rem);color:#fbbf24;margin-bottom:8px;}
+.qa-hint-label{font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.qa-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:14px 18px;cursor:pointer;transition:all 0.2s;margin-bottom:10px;}
+.qa-item:hover{background:rgba(255,255,255,0.11);}
+.qa-q{font-size:clamp(0.95rem,1.6vw,1.15rem);color:#fff;font-weight:700;}
+.qa-a{font-size:clamp(0.85rem,1.3vw,1.02rem);color:#4ade80;font-weight:700;margin-top:7px;display:none;}
+.qa-item.show .qa-a{display:block;}
+.qa-hint{font-size:0.78rem;color:rgba(255,255,255,0.35);font-weight:600;margin-top:4px;}
+
+/* ══ S6 READING STRATEGY GAME ══ */
+#s6{background:linear-gradient(140deg,#1a0a30,#100620);}
+.strat-game-wrap{width:100%;max-width:1100px;}
+.strat-game-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,4vw,3.2rem);color:#e879f9;text-align:center;margin-bottom:6px;}
+.strat-game-sub{text-align:center;font-size:clamp(1rem,1.7vw,1.2rem);color:rgba(255,255,255,0.65);font-weight:600;margin-bottom:20px;}
+.strategy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px;}
+.sc-card{border-radius:18px;padding:18px 16px;cursor:pointer;transition:all 0.25s;border:2px solid transparent;text-align:center;}
+.sc-card:hover{transform:translateY(-4px);}
+.sc-card.c1{background:rgba(56,189,248,0.12);border-color:rgba(56,189,248,0.3);}
+.sc-card.c2{background:rgba(74,222,128,0.12);border-color:rgba(74,222,128,0.3);}
+.sc-card.c3{background:rgba(251,191,36,0.12);border-color:rgba(251,191,36,0.3);}
+.sc-card.c4{background:rgba(167,139,250,0.12);border-color:rgba(167,139,250,0.3);}
+.sc-card.c5{background:rgba(232,121,249,0.12);border-color:rgba(232,121,249,0.3);}
+.sc-card.c6{background:rgba(248,113,113,0.12);border-color:rgba(248,113,113,0.3);}
+.sc-card.active.c1{background:rgba(56,189,248,0.3);border-color:#38bdf8;}
+.sc-card.active.c2{background:rgba(74,222,128,0.3);border-color:#4ade80;}
+.sc-card.active.c3{background:rgba(251,191,36,0.3);border-color:#fbbf24;}
+.sc-card.active.c4{background:rgba(167,139,250,0.3);border-color:#a78bfa;}
+.sc-card.active.c5{background:rgba(232,121,249,0.3);border-color:#e879f9;}
+.sc-card.active.c6{background:rgba(248,113,113,0.3);border-color:#f87171;}
+.sc-emoji{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:10px;}
+.sc-title{font-size:clamp(1rem,1.8vw,1.3rem);font-weight:800;color:#fff;margin-bottom:5px;}
+.sc-desc{font-size:clamp(0.82rem,1.3vw,1rem);color:rgba(255,255,255,0.65);font-weight:600;line-height:1.5;}
+.sc-detail{display:none;margin-top:10px;font-size:clamp(0.82rem,1.3vw,0.98rem);color:#fff;font-weight:700;background:rgba(0,0,0,0.2);border-radius:10px;padding:8px 12px;line-height:1.6;}
+.sc-card.active .sc-detail{display:block;}
+
+/* ══ S7 PRE-TEST INTRO ══ */
+#s7{background:linear-gradient(140deg,#1a0a30,#120820);}
+#s7::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(196,125,253,0.22) 0%,transparent 55%);}
+.pretest-intro{position:relative;text-align:center;max-width:940px;}
+.pt-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(196,125,253,0.15);border:2px solid rgba(196,125,253,0.3);color:#e879f9;padding:9px 26px;border-radius:100px;font-size:clamp(0.9rem,1.6vw,1.1rem);font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:22px;}
+.pt-big{font-family:'Fredoka One',cursive;font-size:clamp(3rem,6.5vw,5.5rem);color:#fff;line-height:1.05;margin-bottom:14px;}
+.pt-big span{color:#e879f9;}
+.pt-desc{font-size:clamp(1.05rem,1.9vw,1.4rem);color:rgba(255,255,255,0.7);font-weight:600;margin-bottom:28px;line-height:1.75;}
+.pt-stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.pt-stat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:18px;padding:16px 32px;text-align:center;}
+.pt-stat-num{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3.5vw,2.8rem);color:#e879f9;}
+.pt-stat-label{font-size:clamp(0.85rem,1.3vw,1rem);color:rgba(255,255,255,0.55);font-weight:700;margin-top:2px;}
+
+/* ══ QUIZ SLIDES ══ */
+.quiz-slide{background:linear-gradient(140deg,#0e0c28,#0a0820);}
+.quiz-wrap{width:100%;max-width:1080px;}
+.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.quiz-progress{height:7px;background:rgba(255,255,255,0.1);border-radius:100px;flex:1;margin:0 20px;overflow:hidden;}
+.quiz-bar{height:100%;background:#e879f9;border-radius:100px;transition:width 0.4s ease;}
+.quiz-count{font-size:0.85rem;font-weight:800;letter-spacing:1px;color:rgba(255,255,255,0.55);text-transform:uppercase;white-space:nowrap;}
+.q-num-badge{background:rgba(232,121,249,0.15);border:2px solid rgba(232,121,249,0.3);color:#e879f9;padding:6px 20px;border-radius:100px;font-size:0.85rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;display:inline-block;margin-bottom:14px;}
+.q-text{font-size:clamp(1.2rem,2.3vw,1.7rem);color:#fff;font-weight:700;line-height:1.5;margin-bottom:8px;}
+.q-context{background:rgba(56,189,248,0.09);border-left:4px solid #38bdf8;border-radius:0 14px 14px 0;padding:14px 20px;margin-bottom:20px;}
+.q-context-text{font-size:clamp(1rem,1.8vw,1.25rem);color:#e0f2fe;font-weight:600;line-height:1.85;font-style:italic;}
+.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.opt{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.14);border-radius:14px;padding:15px 18px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:14px;}
+.opt:hover:not(.locked){background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.35);transform:translateX(4px);}
+.opt-letter{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:#fff;flex-shrink:0;}
+.opt-text{font-size:clamp(0.95rem,1.6vw,1.2rem);color:#fff;font-weight:700;}
+.opt.correct{background:rgba(74,222,128,0.22);border-color:#4ade80;}
+.opt.correct .opt-letter{background:#4ade80;color:#0d2818;}
+.opt.wrong{background:rgba(248,113,113,0.22);border-color:#f87171;}
+.opt.wrong .opt-letter{background:#f87171;color:#fff;}
+.opt.locked{cursor:default;}
+.q-feedback{margin-top:14px;padding:14px 20px;border-radius:14px;font-size:clamp(0.92rem,1.6vw,1.1rem);font-weight:700;line-height:1.65;display:none;}
+.q-feedback.show{display:block;}
+.q-feedback.correct-fb{background:rgba(74,222,128,0.13);border:1.5px solid rgba(74,222,128,0.32);color:#86efac;}
+.q-feedback.wrong-fb{background:rgba(248,113,113,0.11);border:1.5px solid rgba(248,113,113,0.28);color:#fca5a5;}
+.q-next-btn{margin-top:14px;background:#e879f9;color:#fff;border:none;font-family:'Baloo 2',sans-serif;font-size:1.05rem;font-weight:800;padding:12px 34px;border-radius:100px;cursor:pointer;transition:all 0.2s;display:none;}
+.q-next-btn.show{display:inline-block;}
+.q-next-btn:hover{background:#d946ef;transform:scale(1.04);}
+
+/* ══ S18 RESULT ══ */
+#s18{background:linear-gradient(140deg,#0a1f10,#071510);}
+.result-wrap{text-align:center;max-width:900px;}
+.result-emoji{font-size:clamp(3.5rem,8vw,6.5rem);margin-bottom:16px;}
+.result-title{font-family:'Fredoka One',cursive;font-size:clamp(2.4rem,5.5vw,4.2rem);color:#fff;margin-bottom:10px;}
+.result-score{font-family:'Fredoka One',cursive;font-size:clamp(3.5rem,8.5vw,7rem);color:#4ade80;line-height:1;}
+.result-denom{font-size:clamp(1.6rem,3.2vw,2.8rem);color:rgba(255,255,255,0.45);font-weight:700;}
+.result-msg{font-size:clamp(1.05rem,1.9vw,1.4rem);color:rgba(255,255,255,0.75);font-weight:600;margin:16px 0 24px;line-height:1.75;}
+.result-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.rpill{padding:11px 24px;border-radius:100px;font-weight:700;font-size:clamp(0.88rem,1.5vw,1.05rem);}
+.rpill.g{background:rgba(74,222,128,0.18);border:1.5px solid rgba(74,222,128,0.38);color:#86efac;}
+.rpill.y{background:rgba(251,191,36,0.18);border:1.5px solid rgba(251,191,36,0.38);color:#fde68a;}
+
+/* ══ S19 WRITING PRACTICE ══ */
+#s19{background:linear-gradient(140deg,#1a0f05,#120a04);}
+.write-wrap{width:100%;max-width:1150px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;}
+.write-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,3.8vw,3rem);color:#fb923c;margin-bottom:6px;line-height:1.1;}
+.write-sub{font-size:clamp(0.92rem,1.5vw,1.1rem);color:rgba(255,255,255,0.6);font-weight:600;margin-bottom:18px;}
+.starter-list{display:flex;flex-direction:column;gap:10px;}
+.starter{background:rgba(251,146,60,0.09);border-left:4px solid #fb923c;border-radius:0 14px 14px 0;padding:13px 18px;}
+.starter-en{font-size:clamp(1rem,1.7vw,1.2rem);color:#fff;font-weight:700;}
+.starter-en span{color:#fb923c;}
+.example-card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,0.45);}
+.ec-top{background:linear-gradient(135deg,#ea580c,#b45309);padding:20px 22px;}
+.ec-label{font-size:0.78rem;font-weight:800;letter-spacing:2px;color:rgba(255,255,255,0.65);text-transform:uppercase;margin-bottom:4px;}
+.ec-name{font-family:'Fredoka One',cursive;font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;}
+.ec-sub{color:rgba(255,255,255,0.8);font-size:1rem;font-weight:600;margin-top:3px;}
+.ec-body{padding:16px 22px;display:flex;flex-direction:column;gap:8px;}
+.ec-line{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;background:#f8fafc;border-radius:10px;border-left:4px solid #fb923c;}
+.ec-text{font-size:clamp(0.88rem,1.4vw,1.05rem);color:#1e293b;font-weight:700;}
+.ec-text strong{color:#ea580c;}
+
+/* ══ S20 EXIT TICKET ══ */
+#s20{background:linear-gradient(140deg,#0c1a30,#070e1f);}
+.exit-wrap{text-align:center;max-width:980px;}
+.exit-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(56,189,248,0.12);border:2px solid rgba(56,189,248,0.26);color:#38bdf8;padding:8px 24px;border-radius:100px;font-size:clamp(0.9rem,1.5vw,1.1rem);font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}
+.exit-title{font-family:'Fredoka One',cursive;font-size:clamp(2.4rem,5.5vw,4.2rem);color:#fff;margin-bottom:10px;}
+.exit-title span{color:#38bdf8;}
+.exit-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0;}
+.exit-card{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:20px;padding:22px 24px;text-align:left;}
+.ec-head{font-size:0.8rem;font-weight:800;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-bottom:10px;}
+.ec-starter{font-size:clamp(1.05rem,1.9vw,1.4rem);color:#fff;font-weight:700;line-height:1.65;}
+.ec-starter span{color:#38bdf8;text-decoration:underline;text-decoration-style:dotted;}
+.ec-example{margin-top:10px;font-size:clamp(0.82rem,1.3vw,1rem);color:rgba(255,255,255,0.5);font-weight:600;font-style:italic;}
+.exit-note{font-size:clamp(0.88rem,1.5vw,1.05rem);color:rgba(255,255,255,0.5);font-weight:600;}
+
+/* ══ S21 WRAP UP ══ */
+#s21{background:linear-gradient(140deg,#0d1f2d,#060f17);}
+.wrapup-wrap{text-align:center;max-width:1050px;}
+.wrapup-title{font-family:'Fredoka One',cursive;font-size:clamp(2.4rem,5.5vw,4.2rem);color:#fff;margin-bottom:8px;}
+.wrapup-title span{color:#34d399;}
+.wrapup-sub{font-size:clamp(1rem,1.8vw,1.3rem);color:rgba(255,255,255,0.6);font-weight:600;margin-bottom:26px;}
+.wrapup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:26px;}
+.wk-card{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.11);border-radius:18px;padding:18px 16px;text-align:center;}
+.wk-icon{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:10px;}
+.wk-en{font-size:clamp(0.95rem,1.7vw,1.2rem);color:#fff;font-weight:700;margin-bottom:4px;}
+.wk-th{font-size:clamp(0.8rem,1.3vw,1rem);color:rgba(255,255,255,0.5);font-weight:600;}
+.next-preview{background:rgba(52,211,153,0.1);border:1.5px solid rgba(52,211,153,0.26);border-radius:16px;padding:14px 28px;display:inline-block;}
+.np-label{font-size:0.78rem;font-weight:800;letter-spacing:2px;color:#34d399;text-transform:uppercase;margin-bottom:5px;}
+.np-text{font-size:clamp(1.05rem,1.9vw,1.4rem);color:#fff;font-weight:700;}
+</style>
+</head>
+<body>
+<div class="slide-area">
+
+<!-- ══ S0 COVER ══ -->
+<div class="slide active" id="s0">
+  <div class="cover-wrap">
+    <div class="cover-badge">📚 ภาษาอังกฤษ · ม.5 · คาบที่ 1</div>
+    <div class="cover-title">English<br><span>Reading & Writing</span></div>
+    <div class="cover-sub">Unit 1: Why Reading and Writing Matter · 50 นาที</div>
+    <div class="cover-pills">
+      <div class="cpill">🎯 Objectives</div>
+      <div class="cpill">🌍 Warm-up + Game</div>
+      <div class="cpill">📖 Content</div>
+      <div class="cpill">📝 Reading</div>
+      <div class="cpill">🧪 Pre-test 10 ข้อ</div>
+      <div class="cpill">✍️ Writing</div>
+      <div class="cpill">🎫 Exit Ticket</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S1 OBJECTIVES ══ -->
+<div class="slide" id="s1">
+  <div class="obj-wrap">
+    <div>
+      <div class="slide-label">📌 Today's Goals</div>
+      <div class="slide-label-th">วันนี้นักเรียนจะสามารถ...</div>
+      <div class="obj-item"><div class="obj-num">1</div><div><div class="obj-text">Understand why reading and writing in English are important</div><div class="obj-text-th">เข้าใจความสำคัญของการอ่านและเขียน</div></div></div>
+      <div class="obj-item"><div class="obj-num">2</div><div><div class="obj-text">Identify your own reading and writing challenges</div><div class="obj-text-th">รู้จักปัญหาของตัวเองในการอ่านและเขียน</div></div></div>
+      <div class="obj-item"><div class="obj-num">3</div><div><div class="obj-text">Read a short passage and answer comprehension questions</div><div class="obj-text-th">อ่านข้อความสั้น ๆ และตอบคำถามได้</div></div></div>
+      <div class="obj-item"><div class="obj-num">4</div><div><div class="obj-text">Write 3–5 sentences about yourself in English</div><div class="obj-text-th">เขียนประโยคเกี่ยวกับตัวเองได้ 3–5 ประโยค</div></div></div>
+    </div>
+    <div>
+      <div class="tl-head">⏱ แผนเวลา 50 นาที</div>
+      <div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-time">0–7 min</div><div class="tl-desc">🌍 Warm-up + Word Snap Game</div><div class="tl-desc-th">เกมจับคู่คำศัพท์ + ถามนักเรียน</div></div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-time">7–18 min</div><div class="tl-desc">📖 Why Reading & Writing Matter</div><div class="tl-desc-th">เนื้อหา + กลยุทธ์การอ่าน</div></div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-time">18–25 min</div><div class="tl-desc">📄 Short Reading Passage</div><div class="tl-desc-th">อ่านข้อความและตอบคำถาม</div></div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-time">25–38 min</div><div class="tl-desc">🧪 Pre-test (10 ข้อ)</div><div class="tl-desc-th">ทดสอบความรู้เบื้องต้น</div></div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div><div><div class="tl-time">38–46 min</div><div class="tl-desc">✍️ Writing Practice</div><div class="tl-desc-th">เขียนประโยคเกี่ยวกับตัวเอง</div></div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-dot"></div></div><div><div class="tl-time">46–50 min</div><div class="tl-desc">🎫 Exit Ticket</div><div class="tl-desc-th">สรุปและประเมินตัวเอง</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S2 WARM-UP QUESTION ══ -->
+<div class="slide" id="s2">
+  <div class="wu-wrap">
+    <div class="wu-badge">🌍 Warm-up · 3 นาที</div>
+    <div class="wu-title">Where do you see <span>English?</span></div>
+    <div class="wu-question">
+      <div class="wu-q-en">Where do you see or use English in your daily life?</div>
+      <div class="wu-q-th">นักเรียนเห็นหรือใช้ภาษาอังกฤษในชีวิตประจำวันจากที่ไหนบ้าง? คลิกเลือกได้!</div>
+    </div>
+    <div class="wu-grid">
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">📱 Social Media</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">🎮 Video Games</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">🎵 Songs / Music</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">🎬 Movies / Series</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">🌐 Websites</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">🛍️ Product Labels</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">📝 School Subjects</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">✈️ Travel / Signs</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">💬 Chat / Messages</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">📺 YouTube</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">🍔 Restaurant Menus</div>
+      <div class="wu-chip" onclick="this.classList.toggle('sel')">💻 Computer / Apps</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S3 WORD SNAP GAME ══ -->
+<div class="slide" id="s3">
+  <div class="snap-wrap">
+    <div class="snap-title">🎮 Word Snap! จับคู่คำศัพท์</div>
+    <div class="snap-sub">จับคู่คำภาษาอังกฤษ (ซ้าย) กับความหมาย (ขวา) — คลิกคำซ้าย แล้วคลิกคำขวา!</div>
+    <div class="snap-instructions">
+      <div class="snap-step"><div class="snap-step-num">1</div><div class="snap-step-text">คลิกคำภาษาอังกฤษที่ต้องการจับคู่</div></div>
+      <div class="snap-step"><div class="snap-step-num">2</div><div class="snap-step-text">คลิกความหมายภาษาไทยที่ตรงกัน</div></div>
+      <div class="snap-step"><div class="snap-step-num">3</div><div class="snap-step-text">จับคู่ให้ครบ 5 คู่ ให้เร็วที่สุด!</div></div>
+    </div>
+    <div class="snap-cards-row" id="snapArea">
+      <!-- filled by JS -->
+    </div>
+    <div class="snap-score-row">
+      <div class="snap-score-txt" id="snapScore">คู่ที่จับได้: 0 / 5</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S4 WHY MATTERS ══ -->
+<div class="slide" id="s4">
+  <div class="why-wrap">
+    <div>
+      <div class="why-title">📖 Why Reading?</div>
+      <div class="why-title-th">ทำไมการอ่านภาษาอังกฤษถึงสำคัญ?</div>
+      <div class="why-item"><div class="why-icon">📰</div><div><div class="why-en">Get information from many sources</div><div class="why-th">รับข้อมูลจากหลายแหล่ง เช่น บทความ ข่าว เว็บไซต์</div></div></div>
+      <div class="why-item"><div class="why-icon">📚</div><div><div class="why-en">Learn new vocabulary naturally</div><div class="why-th">เรียนรู้คำศัพท์ใหม่ผ่านบริบทจริง</div></div></div>
+      <div class="why-item"><div class="why-icon">🎓</div><div><div class="why-en">Study better in every subject</div><div class="why-th">เรียนได้ดีขึ้นทุกวิชาที่ใช้ภาษาอังกฤษ</div></div></div>
+      <div class="why-item"><div class="why-icon">🌍</div><div><div class="why-en">Understand global media and news</div><div class="why-th">เข้าใจสื่อและข่าวสารระดับโลก</div></div></div>
+      <div class="why-item"><div class="why-icon">💼</div><div><div class="why-en">Prepare for exams, university & career</div><div class="why-th">เตรียมตัวสอบ O-NET, เข้ามหาวิทยาลัย และการทำงาน</div></div></div>
+      <br>
+      <div class="why-title" style="color:#38bdf8;">✍️ Why Writing?</div>
+      <div class="why-title-th">ทำไมการเขียนภาษาอังกฤษถึงสำคัญ?</div>
+      <div class="why-item"><div class="why-icon">💡</div><div><div class="why-en">Express your ideas and opinions clearly</div><div class="why-th">แสดงความคิดเห็นและความรู้สึกได้ชัดเจน</div></div></div>
+      <div class="why-item"><div class="why-icon">🔗</div><div><div class="why-en">Communicate with people worldwide</div><div class="why-th">สื่อสารกับคนทั่วโลกผ่านอีเมล, แชท, โซเชียล</div></div></div>
+    </div>
+    <div>
+      <div class="prob-card">
+        <div class="prob-head">⚠️ Common Problems</div>
+        <div style="font-size:0.82rem;font-weight:700;color:rgba(251,191,36,0.65);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">ปัญหาที่นักเรียนมักพบ — อันไหนที่รู้สึกเหมือนกัน?</div>
+        <div class="prob-item"><div class="prob-x">✗</div><div><div class="prob-text">Don't know enough vocabulary</div><div class="prob-th">ไม่รู้คำศัพท์เพียงพอ อ่านแล้วงง</div></div></div>
+        <div class="prob-item"><div class="prob-x">✗</div><div><div class="prob-text">Afraid of making grammar mistakes</div><div class="prob-th">กลัว grammar ผิด เลยไม่กล้าเขียน</div></div></div>
+        <div class="prob-item"><div class="prob-x">✗</div><div><div class="prob-text">Don't know how to start writing</div><div class="prob-th">ไม่รู้จะเริ่มต้นเขียนอย่างไร</div></div></div>
+        <div class="prob-item"><div class="prob-x">✗</div><div><div class="prob-text">Read word by word — very slowly</div><div class="prob-th">อ่านทีละคำ ช้า ไม่เข้าใจภาพรวม</div></div></div>
+        <div class="prob-item"><div class="prob-x">✗</div><div><div class="prob-text">Translate everything into Thai first</div><div class="prob-th">แปลทุกคำเป็นไทยก่อน ทำให้ช้าและสับสน</div></div></div>
+      </div>
+      <div class="strategy-box">
+        <div class="strat-lbl">💡 Reading Strategy — จำไว้!</div>
+        <div class="strat-text">Who? &nbsp;·&nbsp; What? &nbsp;·&nbsp; Where?<br>When? &nbsp;·&nbsp; Why? &nbsp;·&nbsp; How?</div>
+        <div class="strat-th">อ่านโดยจับใจความ 5W1H ไม่ต้องแปลทุกคำ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S5 READING STRATEGIES (Interactive) ══ -->
+<div class="slide" id="s5">
+  <div class="strat-game-wrap">
+    <div class="strat-game-title">🧠 Reading Strategies</div>
+    <div class="strat-game-sub">กลยุทธ์การอ่านภาษาอังกฤษ — คลิกแต่ละกล่องเพื่อดูรายละเอียด!</div>
+    <div class="strategy-cards">
+      <div class="sc-card c1" onclick="this.classList.toggle('active')">
+        <div class="sc-emoji">👀</div>
+        <div class="sc-title">Don't Translate Every Word</div>
+        <div class="sc-desc">อย่าแปลทีละคำ — จับใจความ</div>
+        <div class="sc-detail">❌ ผิด: แปลทุกคำ → ช้า + สับสน<br>✅ ถูก: อ่านทั้งประโยค → ถามว่า "เรื่องนี้เกี่ยวกับอะไร?"<br>เช่น "The dog ran fast" → สุนัขวิ่งเร็ว (ไม่ต้องแปล "the")</div>
+      </div>
+      <div class="sc-card c2" onclick="this.classList.toggle('active')">
+        <div class="sc-emoji">🔍</div>
+        <div class="sc-title">Skimming — อ่านผ่านๆ</div>
+        <div class="sc-desc">อ่านเร็วเพื่อจับภาพรวม</div>
+        <div class="sc-detail">ดูหัวข้อ, ประโยคแรกของแต่ละย่อหน้า<br>ถามตัวเอง: "เรื่องนี้พูดถึงอะไร?"<br>ใช้เวลา 30 วินาที ก็รู้เรื่องโดยรวมแล้ว!</div>
+      </div>
+      <div class="sc-card c3" onclick="this.classList.toggle('active')">
+        <div class="sc-emoji">🎯</div>
+        <div class="sc-title">Scanning — ค้นหาข้อมูล</div>
+        <div class="sc-desc">อ่านเพื่อหาคำหรือข้อมูลเฉพาะ</div>
+        <div class="sc-detail">วิ่งตาหาคำสำคัญ (keyword)<br>ไม่ต้องอ่านทุกคำ ค้นหาเหมือน Ctrl+F<br>เช่น หาชื่อ, วันที่, ตัวเลข, สถานที่</div>
+      </div>
+      <div class="sc-card c4" onclick="this.classList.toggle('active')">
+        <div class="sc-emoji">🧩</div>
+        <div class="sc-title">Context Clues — เดาจากบริบท</div>
+        <div class="sc-desc">เดาความหมายคำจากประโยครอบข้าง</div>
+        <div class="sc-detail">ไม่รู้คำศัพท์? → อย่าหยุด!<br>ดูคำรอบๆ ว่าพูดถึงอะไร<br>เช่น "She was exhausted after running." → exhausted = เหนื่อยมาก</div>
+      </div>
+      <div class="sc-card c5" onclick="this.classList.toggle('active')">
+        <div class="sc-emoji">❓</div>
+        <div class="sc-title">Ask 5W1H Questions</div>
+        <div class="sc-desc">ตั้งคำถามขณะอ่าน</div>
+        <div class="sc-detail">Who? ใคร &nbsp;·&nbsp; What? ทำอะไร<br>Where? ที่ไหน &nbsp;·&nbsp; When? เมื่อไร<br>Why? ทำไม &nbsp;·&nbsp; How? อย่างไร<br>ตอบได้ = เข้าใจเรื่องแล้ว!</div>
+      </div>
+      <div class="sc-card c6" onclick="this.classList.toggle('active')">
+        <div class="sc-emoji">🔁</div>
+        <div class="sc-title">Re-read if Confused</div>
+        <div class="sc-desc">อ่านซ้ำถ้าไม่เข้าใจ — ปกติมาก!</div>
+        <div class="sc-detail">ทุกคนต้องอ่านซ้ำบางครั้ง<br>อ่านซ้าอาจช่วยให้เข้าใจขึ้นมาก<br>ครั้งที่ 2 มักจะเข้าใจมากกว่าครั้งแรกเสมอ!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S6 READING PASSAGE ══ -->
+<div class="slide" id="s6">
+  <div class="passage-wrap">
+    <div>
+      <div class="pass-title">📖 Short Reading Passage</div>
+      <div class="pass-subtitle">อ่านข้อความนี้ แล้วตอบคำถามในแผงขวา</div>
+      <div class="pass-box">
+        <div class="pass-text">
+          My name is <strong>Anna</strong>. I am a student in <strong>Grade 11</strong>.
+          I like English because I can use it to listen to songs and watch movies.
+          Sometimes, English is <strong>difficult</strong> for me, but I try to learn <strong>new words</strong> every day.
+          I think <strong>reading is very useful</strong> because it helps me understand the world better.
+          My biggest challenge is writing — I often do not know <strong>how to start</strong>.
+          However, my teacher always says, <strong>"Practice makes perfect!"</strong>
+          So I try to write something in English at least three times a week.
+        </div>
+      </div>
+      <div class="pass-tip">
+        <div class="tip-head">📝 Apply Your Strategies</div>
+        <div class="tip-item">
+          ✓ ใช้ <strong style="color:#38bdf8;">Skimming</strong> — อ่านผ่านก่อน เรื่องนี้เกี่ยวกับอะไร?<br>
+          ✓ ใช้ <strong style="color:#38bdf8;">5W1H</strong> — Anna เป็นใคร? เธอทำอะไร? ทำไม?<br>
+          ✓ ใช้ <strong style="color:#38bdf8;">Context Clues</strong> — คำที่ไม่รู้ ลองเดาจากประโยครอบข้าง
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="qa-head">❓ Comprehension Check</div>
+      <div class="qa-hint-label">คลิกที่คำถามเพื่อดูเฉลย</div>
+      <div class="qa-item" onclick="this.classList.toggle('show')">
+        <div class="qa-q">1. What grade is Anna in?</div>
+        <div class="qa-a">✅ She is in Grade 11 (ม.5)</div>
+        <div class="qa-hint">👆 Click to reveal answer</div>
+      </div>
+      <div class="qa-item" onclick="this.classList.toggle('show')">
+        <div class="qa-q">2. Why does Anna like English?</div>
+        <div class="qa-a">✅ Because she can use it to listen to songs and watch movies.</div>
+        <div class="qa-hint">👆 Click to reveal answer</div>
+      </div>
+      <div class="qa-item" onclick="this.classList.toggle('show')">
+        <div class="qa-q">3. What is Anna's biggest challenge?</div>
+        <div class="qa-a">✅ Writing — she often does not know how to start.</div>
+        <div class="qa-hint">👆 Click to reveal answer</div>
+      </div>
+      <div class="qa-item" onclick="this.classList.toggle('show')">
+        <div class="qa-q">4. How often does Anna write in English?</div>
+        <div class="qa-a">✅ At least three times a week.</div>
+        <div class="qa-hint">👆 Click to reveal answer</div>
+      </div>
+      <div class="qa-item" onclick="this.classList.toggle('show')">
+        <div class="qa-q">5. What does "Practice makes perfect" mean?</div>
+        <div class="qa-a">✅ The more you practice, the better you become. (ยิ่งฝึก ยิ่งเก่ง)</div>
+        <div class="qa-hint">👆 Click to reveal answer</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S7 PRE-TEST INTRO ══ -->
+<div class="slide" id="s7">
+  <div class="pretest-intro">
+    <div class="pt-badge">🧪 Knowledge Check</div>
+    <div class="pt-big">Pre-<span>Test</span></div>
+    <div class="pt-desc">
+      ทดสอบความรู้เบื้องต้นก่อนเรียน<br>
+      <strong style="color:#e879f9;">ไม่มีผลต่อเกรด</strong> — ตอบตามที่รู้จริง เพื่อให้ครูรู้ว่าจะช่วยตรงจุดไหน<br>
+      <em style="color:rgba(255,255,255,0.45);font-size:0.95em;">This is NOT graded — just to check your baseline!</em>
+    </div>
+    <div class="pt-stats">
+      <div class="pt-stat"><div class="pt-stat-num">10</div><div class="pt-stat-label">คำถาม / Questions</div></div>
+      <div class="pt-stat"><div class="pt-stat-num">12</div><div class="pt-stat-label">นาที / Minutes</div></div>
+      <div class="pt-stat"><div class="pt-stat-num">4</div><div class="pt-stat-label">ตัวเลือก / Choices</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q1 ══ -->
+<div class="slide quiz-slide" id="s8">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 1 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:10%"></div></div>
+      <span class="quiz-count">Vocabulary</span>
+    </div>
+    <div class="q-num-badge">📖 Vocabulary · Q1</div>
+    <div class="q-text">Choose the correct meaning of the underlined word.</div>
+    <div class="q-context"><div class="q-context-text">"She read the <u><strong>passage</strong></u> carefully and answered all the questions."</div></div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','B','q1')"><div class="opt-letter">A</div><div class="opt-text">A type of food</div></div>
+      <div class="opt" onclick="checkQ(this,'B','B','q1')"><div class="opt-letter">B</div><div class="opt-text">A piece of written text</div></div>
+      <div class="opt" onclick="checkQ(this,'C','B','q1')"><div class="opt-letter">C</div><div class="opt-text">A hallway or corridor</div></div>
+      <div class="opt" onclick="checkQ(this,'D','B','q1')"><div class="opt-letter">D</div><div class="opt-text">A type of music</div></div>
+    </div>
+    <div class="q-feedback" id="q1-fb"></div>
+    <button class="q-next-btn" id="q1-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q2 ══ -->
+<div class="slide quiz-slide" id="s9">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 2 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:20%"></div></div>
+      <span class="quiz-count">Vocabulary in Context</span>
+    </div>
+    <div class="q-num-badge">📚 Vocabulary · Q2</div>
+    <div class="q-text">Which word best completes this sentence?</div>
+    <div class="q-context"><div class="q-context-text">"Reading every day can help you ________ your English vocabulary."</div></div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','B','q2')"><div class="opt-letter">A</div><div class="opt-text">forget</div></div>
+      <div class="opt" onclick="checkQ(this,'B','B','q2')"><div class="opt-letter">B</div><div class="opt-text">improve</div></div>
+      <div class="opt" onclick="checkQ(this,'C','B','q2')"><div class="opt-letter">C</div><div class="opt-text">ignore</div></div>
+      <div class="opt" onclick="checkQ(this,'D','B','q2')"><div class="opt-letter">D</div><div class="opt-text">remove</div></div>
+    </div>
+    <div class="q-feedback" id="q2-fb"></div>
+    <button class="q-next-btn" id="q2-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q3 ══ -->
+<div class="slide quiz-slide" id="s10">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 3 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:30%"></div></div>
+      <span class="quiz-count">Comprehension</span>
+    </div>
+    <div class="q-num-badge">📖 Comprehension · Q3</div>
+    <div class="q-text">Read the short text and answer the question.</div>
+    <div class="q-context"><div class="q-context-text">"Tom studies English every evening. He reads short articles online and writes a diary in English. He wants to improve his writing skills before university."</div></div>
+    <div class="q-text" style="font-size:clamp(1rem,1.8vw,1.35rem);margin-bottom:16px;">What is Tom's main goal?</div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','C','q3')"><div class="opt-letter">A</div><div class="opt-text">To read more books at home</div></div>
+      <div class="opt" onclick="checkQ(this,'B','C','q3')"><div class="opt-letter">B</div><div class="opt-text">To find a job as a teacher</div></div>
+      <div class="opt" onclick="checkQ(this,'C','C','q3')"><div class="opt-letter">C</div><div class="opt-text">To improve his writing before university</div></div>
+      <div class="opt" onclick="checkQ(this,'D','C','q3')"><div class="opt-letter">D</div><div class="opt-text">To study abroad immediately</div></div>
+    </div>
+    <div class="q-feedback" id="q3-fb"></div>
+    <button class="q-next-btn" id="q3-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q4 ══ -->
+<div class="slide quiz-slide" id="s11">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 4 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:40%"></div></div>
+      <span class="quiz-count">Grammar</span>
+    </div>
+    <div class="q-num-badge">✏️ Grammar · Q4</div>
+    <div class="q-text">Choose the sentence with <strong style="color:#e879f9;">correct grammar</strong>.</div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','C','q4')"><div class="opt-letter">A</div><div class="opt-text">She read a book yesterday and enjoy it.</div></div>
+      <div class="opt" onclick="checkQ(this,'B','C','q4')"><div class="opt-letter">B</div><div class="opt-text">He don't know many English words.</div></div>
+      <div class="opt" onclick="checkQ(this,'C','C','q4')"><div class="opt-letter">C</div><div class="opt-text">They practice writing every day.</div></div>
+      <div class="opt" onclick="checkQ(this,'D','C','q4')"><div class="opt-letter">D</div><div class="opt-text">I am study English right now.</div></div>
+    </div>
+    <div class="q-feedback" id="q4-fb"></div>
+    <button class="q-next-btn" id="q4-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q5 ══ -->
+<div class="slide quiz-slide" id="s12">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 5 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:50%"></div></div>
+      <span class="quiz-count">Writing</span>
+    </div>
+    <div class="q-num-badge">✍️ Writing · Q5</div>
+    <div class="q-text">Which is the <strong style="color:#e879f9;">best sentence</strong> to introduce yourself?</div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','A','q5')"><div class="opt-letter">A</div><div class="opt-text">My name is Sara. I am in Grade 11.</div></div>
+      <div class="opt" onclick="checkQ(this,'B','A','q5')"><div class="opt-letter">B</div><div class="opt-text">Name Sara. Grade 11 student.</div></div>
+      <div class="opt" onclick="checkQ(this,'C','A','q5')"><div class="opt-letter">C</div><div class="opt-text">Sara is my name is, Grade 11.</div></div>
+      <div class="opt" onclick="checkQ(this,'D','A','q5')"><div class="opt-letter">D</div><div class="opt-text">Is name Sara, she student M.5.</div></div>
+    </div>
+    <div class="q-feedback" id="q5-fb"></div>
+    <button class="q-next-btn" id="q5-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q6 ══ -->
+<div class="slide quiz-slide" id="s13">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 6 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:60%"></div></div>
+      <span class="quiz-count">Reading Strategy</span>
+    </div>
+    <div class="q-num-badge">🔍 Strategy · Q6</div>
+    <div class="q-text">You have 30 seconds to understand the main idea of an article. Which strategy should you use?</div>
+    <div class="q-context"><div class="q-context-text">คุณมีเวลา 30 วินาที อยากรู้ว่าบทความนี้พูดถึงอะไร — ควรใช้กลยุทธ์ไหน?</div></div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','A','q6')"><div class="opt-letter">A</div><div class="opt-text">Skimming — read quickly for overview</div></div>
+      <div class="opt" onclick="checkQ(this,'B','A','q6')"><div class="opt-letter">B</div><div class="opt-text">Translate every word carefully</div></div>
+      <div class="opt" onclick="checkQ(this,'C','A','q6')"><div class="opt-letter">C</div><div class="opt-text">Scanning — search for specific data</div></div>
+      <div class="opt" onclick="checkQ(this,'D','A','q6')"><div class="opt-letter">D</div><div class="opt-text">Close reading — study every sentence</div></div>
+    </div>
+    <div class="q-feedback" id="q6-fb"></div>
+    <button class="q-next-btn" id="q6-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q7 ══ -->
+<div class="slide quiz-slide" id="s14">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 7 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:70%"></div></div>
+      <span class="quiz-count">Context Clues</span>
+    </div>
+    <div class="q-num-badge">🧩 Context Clues · Q7</div>
+    <div class="q-text">Use context clues to guess the meaning of the underlined word.</div>
+    <div class="q-context"><div class="q-context-text">"After running five kilometres, she was completely <u><strong>exhausted</strong></u> and could not walk anymore."</div></div>
+    <div class="q-text" style="font-size:clamp(1rem,1.8vw,1.35rem);margin-bottom:16px;">What does "exhausted" most likely mean?</div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','B','q7')"><div class="opt-letter">A</div><div class="opt-text">Very happy and excited</div></div>
+      <div class="opt" onclick="checkQ(this,'B','B','q7')"><div class="opt-letter">B</div><div class="opt-text">Extremely tired</div></div>
+      <div class="opt" onclick="checkQ(this,'C','B','q7')"><div class="opt-letter">C</div><div class="opt-text">Very hungry</div></div>
+      <div class="opt" onclick="checkQ(this,'D','B','q7')"><div class="opt-letter">D</div><div class="opt-text">Slightly confused</div></div>
+    </div>
+    <div class="q-feedback" id="q7-fb"></div>
+    <button class="q-next-btn" id="q7-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q8 ══ -->
+<div class="slide quiz-slide" id="s15">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 8 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:80%"></div></div>
+      <span class="quiz-count">Grammar</span>
+    </div>
+    <div class="q-num-badge">✏️ Grammar · Q8</div>
+    <div class="q-text">Choose the correct word to complete the sentence.</div>
+    <div class="q-context"><div class="q-context-text">"She ________ to school every day by bicycle."</div></div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','B','q8')"><div class="opt-letter">A</div><div class="opt-text">go</div></div>
+      <div class="opt" onclick="checkQ(this,'B','B','q8')"><div class="opt-letter">B</div><div class="opt-text">goes</div></div>
+      <div class="opt" onclick="checkQ(this,'C','B','q8')"><div class="opt-letter">C</div><div class="opt-text">going</div></div>
+      <div class="opt" onclick="checkQ(this,'D','B','q8')"><div class="opt-letter">D</div><div class="opt-text">gone</div></div>
+    </div>
+    <div class="q-feedback" id="q8-fb"></div>
+    <button class="q-next-btn" id="q8-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q9 ══ -->
+<div class="slide quiz-slide" id="s16">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 9 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:90%"></div></div>
+      <span class="quiz-count">Comprehension</span>
+    </div>
+    <div class="q-num-badge">📖 Comprehension · Q9</div>
+    <div class="q-text">Read the passage and answer the question.</div>
+    <div class="q-context"><div class="q-context-text">"Reading is not just a school skill. People use it every day — to read menus, signs, emails, news, and social media. The more you read, the better you understand the world around you."</div></div>
+    <div class="q-text" style="font-size:clamp(1rem,1.8vw,1.35rem);margin-bottom:16px;">According to the passage, what happens when you read more?</div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','D','q9')"><div class="opt-letter">A</div><div class="opt-text">You get better grades in school only</div></div>
+      <div class="opt" onclick="checkQ(this,'B','D','q9')"><div class="opt-letter">B</div><div class="opt-text">You can read menus faster</div></div>
+      <div class="opt" onclick="checkQ(this,'C','D','q9')"><div class="opt-letter">C</div><div class="opt-text">You use social media more often</div></div>
+      <div class="opt" onclick="checkQ(this,'D','D','q9')"><div class="opt-letter">D</div><div class="opt-text">You understand the world better</div></div>
+    </div>
+    <div class="q-feedback" id="q9-fb"></div>
+    <button class="q-next-btn" id="q9-next" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ Q10 ══ -->
+<div class="slide quiz-slide" id="s17">
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <span class="quiz-count">Question 10 / 10</span>
+      <div class="quiz-progress"><div class="quiz-bar" style="width:100%"></div></div>
+      <span class="quiz-count">Writing Awareness</span>
+    </div>
+    <div class="q-num-badge">✍️ Writing · Q10</div>
+    <div class="q-text">What is the <strong style="color:#e879f9;">correct structure</strong> for a complete English sentence?</div>
+    <div class="options-grid">
+      <div class="opt" onclick="checkQ(this,'A','C','q10')"><div class="opt-letter">A</div><div class="opt-text">Verb + Subject + Object (e.g., Likes she music.)</div></div>
+      <div class="opt" onclick="checkQ(this,'B','C','q10')"><div class="opt-letter">B</div><div class="opt-text">Object + Verb + Subject (e.g., Music she likes.)</div></div>
+      <div class="opt" onclick="checkQ(this,'C','C','q10')"><div class="opt-letter">C</div><div class="opt-text">Subject + Verb + Object (e.g., She likes music.)</div></div>
+      <div class="opt" onclick="checkQ(this,'D','C','q10')"><div class="opt-letter">D</div><div class="opt-text">Subject + Object + Verb (e.g., She music likes.)</div></div>
+    </div>
+    <div class="q-feedback" id="q10-fb"></div>
+    <button class="q-next-btn" id="q10-next" onclick="go(1)">See Results! 🎉</button>
+  </div>
+</div>
+
+<!-- ══ S18 RESULT ══ -->
+<div class="slide" id="s18">
+  <div class="result-wrap">
+    <div class="result-emoji" id="resultEmoji">🎉</div>
+    <div class="result-title">Pre-Test Complete!</div>
+    <div>
+      <span class="result-score" id="scoreNum">0</span>
+      <span class="result-denom"> / 10</span>
+    </div>
+    <div class="result-msg" id="resultMsg">กำลังคำนวณผล...</div>
+    <div class="result-pills">
+      <div class="rpill g">✓ ครูจะรู้ว่าช่วยตรงจุดไหน</div>
+      <div class="rpill y">📚 เรียนต่อในคาบถัดไปได้เลย!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S19 WRITING PRACTICE ══ -->
+<div class="slide" id="s19">
+  <div class="write-wrap">
+    <div>
+      <div class="write-title">✍️ Writing Practice</div>
+      <div class="write-sub">เขียน 3–5 ประโยคเกี่ยวกับตัวเอง — Write 3–5 sentences about yourself</div>
+      <div class="starter-list">
+        <div class="starter"><div class="starter-en">My name is ______. <span>(ชื่อ / ชื่อเล่น)</span></div></div>
+        <div class="starter"><div class="starter-en">I am in Grade ______. <span>(ชั้นเรียน)</span></div></div>
+        <div class="starter"><div class="starter-en">I like ______. <span>(สิ่งที่ชอบ)</span></div></div>
+        <div class="starter"><div class="starter-en">I think English is ______. <span>(ความคิดเห็น)</span></div></div>
+        <div class="starter"><div class="starter-en">I want to improve my ______ skill. <span>(ทักษะที่อยากพัฒนา)</span></div></div>
+        <div class="starter"><div class="starter-en">One fun fact about me is ______. <span>(เรื่องสนุก)</span></div></div>
+      </div>
+      <div style="margin-top:14px;background:rgba(251,146,60,0.09);border-radius:14px;padding:13px 18px;">
+        <div style="font-size:0.82rem;font-weight:800;letter-spacing:1px;color:#fb923c;text-transform:uppercase;margin-bottom:8px;">💡 Rules to Remember</div>
+        <div style="font-size:clamp(0.9rem,1.5vw,1.1rem);color:rgba(255,255,255,0.8);font-weight:600;line-height:1.85;">• ทุกประโยคขึ้นต้นด้วยตัวพิมพ์ใหญ่ (Capital letter)<br>• ทุกประโยคลงท้ายด้วยจุด (.)<br>• ใช้ "I" ไม่ใช่ "i" (ตัว I ต้องพิมพ์ใหญ่เสมอ)<br>• ไม่ต้องกลัวผิด — ลองก่อนเลย!</div>
+      </div>
+    </div>
+    <div>
+      <div style="text-align:center;color:rgba(255,255,255,0.4);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">✨ ตัวอย่าง / Example</div>
+      <div class="example-card">
+        <div class="ec-top">
+          <div class="ec-label">My Writing · ม.5/2 · เลขที่ 7</div>
+          <div class="ec-name">Mark 🎸</div>
+          <div class="ec-sub">มาร์ค ปัญญาดี · Grade 11</div>
+        </div>
+        <div class="ec-body">
+          <div class="ec-line"><div class="ec-text">My name is <strong>Mark</strong>.</div></div>
+          <div class="ec-line"><div class="ec-text">I am in <strong>Grade 11</strong>.</div></div>
+          <div class="ec-line"><div class="ec-text">I like <strong>music and video games</strong>.</div></div>
+          <div class="ec-line"><div class="ec-text">I think English is <strong>useful but a bit difficult</strong>.</div></div>
+          <div class="ec-line"><div class="ec-text">I want to improve my <strong>reading</strong> skill.</div></div>
+          <div class="ec-line"><div class="ec-text">One fun fact about me is <strong>I have three cats</strong>!</div></div>
+        </div>
+      </div>
+      <div style="margin-top:16px;background:rgba(52,211,153,0.08);border:1.5px solid rgba(52,211,153,0.22);border-radius:14px;padding:13px 18px;">
+        <div style="font-size:0.82rem;font-weight:800;letter-spacing:1px;color:#34d399;text-transform:uppercase;margin-bottom:8px;">📝 Pair Share</div>
+        <div style="font-size:clamp(0.92rem,1.5vw,1.1rem);color:rgba(255,255,255,0.75);font-weight:600;line-height:1.8;">อ่านให้เพื่อนข้างๆ ฟัง — เพื่อนตอบ:<br><em>"What does your friend like?"</em><br><em>"What skill do they want to improve?"</em></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S20 EXIT TICKET ══ -->
+<div class="slide" id="s20">
+  <div class="exit-wrap">
+    <div class="exit-badge">🎫 Exit Ticket — ก่อนออกห้อง</div>
+    <div class="exit-title">Before you <span>leave…</span></div>
+    <div class="exit-cards">
+      <div class="exit-card">
+        <div class="ec-head">💡 What I learned today</div>
+        <div class="ec-starter">Today I learned that <span>______.</span></div>
+        <div class="ec-example">เช่น: "Today I learned that reading helps me understand English better."</div>
+      </div>
+      <div class="exit-card">
+        <div class="ec-head">🎯 What I want to improve</div>
+        <div class="ec-starter">I want to improve my <span>______</span> skill.</div>
+        <div class="ec-example">เช่น: "I want to improve my writing skill."</div>
+      </div>
+      <div class="exit-card">
+        <div class="ec-head">❓ A question I still have</div>
+        <div class="ec-starter">I still don't understand <span>______.</span></div>
+        <div class="ec-example">เช่น: "I still don't understand how to use grammar correctly."</div>
+      </div>
+      <div class="exit-card">
+        <div class="ec-head">⭐ Rate today's class</div>
+        <div class="ec-starter">Today's class was <span>______</span> for me.</div>
+        <div class="ec-example">เช่น: easy · okay · a bit difficult · very helpful · interesting</div>
+      </div>
+    </div>
+    <div class="exit-note">📌 เขียนลงในกระดาษแล้วส่งครูก่อนออกจากห้อง — Write on paper and hand it to the teacher before leaving!</div>
+  </div>
+</div>
+
+<!-- ══ S21 WRAP UP ══ -->
+<div class="slide" id="s21">
+  <div class="wrapup-wrap">
+    <div class="wrapup-title">Great Work <span>Today! 🎉</span></div>
+    <div class="wrapup-sub">วันนี้เราได้เรียนรู้อะไรบ้าง? · What did we cover today?</div>
+    <div class="wrapup-grid">
+      <div class="wk-card"><div class="wk-icon">🌍</div><div class="wk-en">English is all around us</div><div class="wk-th">ภาษาอังกฤษอยู่รอบตัวเราทุกวัน</div></div>
+      <div class="wk-card"><div class="wk-icon">📖</div><div class="wk-en">Reading = Understanding ideas</div><div class="wk-th">การอ่านช่วยให้เข้าใจโลก</div></div>
+      <div class="wk-card"><div class="wk-icon">✍️</div><div class="wk-en">Writing = Expressing yourself</div><div class="wk-th">การเขียนช่วยให้แสดงความคิด</div></div>
+      <div class="wk-card"><div class="wk-icon">🔍</div><div class="wk-en">6 Reading Strategies</div><div class="wk-th">Skim, Scan, Context Clues, 5W1H…</div></div>
+      <div class="wk-card"><div class="wk-icon">🧪</div><div class="wk-en">Pre-test = baseline check</div><div class="wk-th">รู้จุดแข็ง-จุดอ่อนของตัวเอง</div></div>
+      <div class="wk-card"><div class="wk-icon">💪</div><div class="wk-en">Practice makes perfect!</div><div class="wk-th">ยิ่งฝึก ยิ่งเก่ง — ไม่ต้องกลัวผิด</div></div>
+    </div>
+    <div class="next-preview">
+      <div class="np-label">📅 Next Class · คาบหน้า</div>
+      <div class="np-text">Unit 2: Skimming &amp; Scanning — อ่านเร็ว หาข้อมูลเฉพาะ</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /slide-area -->
+
+<div class="bottom-bar">
+  <div class="nav-info" id="navInfo">Cover · 1 / 22</div>
+  <div class="dots-row" id="dotsRow"></div>
+  <div class="btns">
+    <button class="nb" id="btnPrev" onclick="go(-1)" disabled>◀ Back</button>
+    <button class="nb pri" id="btnNext" onclick="go(1)">Next ▶</button>
+  </div>
+</div>
+
+<script>
+const slideIds=['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16','s17','s18','s19','s20','s21'];
+const slideNames=['Cover','Objectives','Warm-up','Word Snap Game','Why It Matters','Reading Strategies','Reading Passage','Pre-test Intro','Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8','Q9','Q10','Results','Writing','Exit Ticket','Wrap Up'];
+const TOTAL=slideIds.length;
+let cur=0;
+let scores={q1:null,q2:null,q3:null,q4:null,q5:null,q6:null,q7:null,q8:null,q9:null,q10:null};
+
+const dr=document.getElementById('dotsRow');
+slideIds.forEach((_,i)=>{
+  const d=document.createElement('button');
+  d.className='dot'+(i===0?' active':'');
+  d.onclick=()=>goTo(i);
+  dr.appendChild(d);
+});
+
+function goTo(n){
+  if(n<0||n>=TOTAL)return;
+  document.getElementById(slideIds[cur]).classList.remove('active');
+  dr.children[cur].classList.remove('active');
+  cur=n;
+  document.getElementById(slideIds[cur]).classList.add('active');
+  dr.children[cur].classList.add('active');
+  document.getElementById('navInfo').textContent=slideNames[cur]+' · '+(cur+1)+' / '+TOTAL;
+  document.getElementById('btnPrev').disabled=cur===0;
+  document.getElementById('btnNext').disabled=cur===TOTAL-1;
+  if(slideIds[cur]==='s18')showResults();
+  if(slideIds[cur]==='s3')initSnap();
+}
+function go(d){goTo(cur+d);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' ')go(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);
+});
+
+/* ── WORD SNAP GAME ── */
+const snapPairs=[
+  {en:'Reading',th:'การอ่าน'},
+  {en:'Writing',th:'การเขียน'},
+  {en:'Vocabulary',th:'คำศัพท์'},
+  {en:'Improve',th:'พัฒนา'},
+  {en:'Passage',th:'บทอ่าน'}
+];
+let snapSelected=null;
+let snapMatched=0;
+let snapInited=false;
+
+function initSnap(){
+  if(snapInited)return;
+  snapInited=true;
+  const area=document.getElementById('snapArea');
+  area.innerHTML='';
+  const enWords=[...snapPairs].map(p=>p.en);
+  const thWords=[...snapPairs].map(p=>p.th);
+  shuffle(enWords); shuffle(thWords);
+  enWords.forEach(w=>{
+    const c=document.createElement('div');
+    c.className='snap-card';
+    c.dataset.type='en';
+    c.dataset.val=w;
+    c.innerHTML='<div class="snap-word">'+w+'</div>';
+    c.onclick=()=>snapClick(c);
+    area.appendChild(c);
+  });
+  thWords.forEach(w=>{
+    const c=document.createElement('div');
+    c.className='snap-card';
+    c.dataset.type='th';
+    c.dataset.val=w;
+    c.innerHTML='<div class="snap-word">'+w+'</div>';
+    c.onclick=()=>snapClick(c);
+    area.appendChild(c);
+  });
+}
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}}
+function snapClick(card){
+  if(card.classList.contains('matched'))return;
+  if(snapSelected===null){
+    card.classList.add('selected');
+    snapSelected=card;
+  } else {
+    if(snapSelected===card){card.classList.remove('selected');snapSelected=null;return;}
+    const a=snapSelected, b=card;
+    const pair=snapPairs.find(p=>(p.en===a.dataset.val&&p.th===b.dataset.val)||(p.th===a.dataset.val&&p.en===b.dataset.val));
+    if(pair){
+      a.classList.remove('selected'); a.classList.add('matched');
+      b.classList.add('matched');
+      snapMatched++;
+      document.getElementById('snapScore').textContent='คู่ที่จับได้: '+snapMatched+' / 5'+(snapMatched===5?' 🎉 ยอดเยี่ยม!':'');
+    } else {
+      a.classList.add('wrong-flash'); b.classList.add('wrong-flash');
+      setTimeout(()=>{a.classList.remove('wrong-flash','selected');b.classList.remove('wrong-flash');},700);
+    }
+    snapSelected=null;
+  }
+}
+
+/* ── QUIZ ── */
+function checkQ(el,chosen,correct,qid){
+  const wrap=el.closest('.quiz-wrap');
+  const opts=wrap.querySelectorAll('.opt');
+  if(opts[0].classList.contains('locked'))return;
+  opts.forEach(o=>{
+    o.classList.add('locked');
+    const l=o.querySelector('.opt-letter').textContent.trim();
+    if(l===correct)o.classList.add('correct');
+    else if(l===chosen&&chosen!==correct)o.classList.add('wrong');
+  });
+  const isCorrect=chosen===correct;
+  if(scores[qid]===null)scores[qid]=isCorrect?1:0;
+  const fb=document.getElementById(qid+'-fb');
+  const nextBtn=document.getElementById(qid+'-next');
+  if(isCorrect){
+    fb.className='q-feedback show correct-fb';
+    fb.innerHTML='✅ <strong>Correct!</strong> ถูกต้อง! '+getFeedback(qid,true);
+  } else {
+    fb.className='q-feedback show wrong-fb';
+    fb.innerHTML='❌ <strong>Not quite.</strong> คำตอบที่ถูกคือ <strong>'+correct+'</strong> — '+getFeedback(qid,false);
+  }
+  nextBtn.classList.add('show');
+}
+
+function getFeedback(qid,correct){
+  const fb={
+    q1:{t:'"Passage" = ข้อความ / บทอ่าน ใช้บ่อยมากในข้อสอบและหนังสือ!',f:'"Passage" ในบริบทนี้ = ข้อความที่อ่าน (ไม่ใช่ทางเดิน corridor)'},
+    q2:{t:'"Improve" = พัฒนา / ทำให้ดีขึ้น เช่น improve vocabulary = พัฒนาคำศัพท์',f:'"Improve" = ทำให้ดีขึ้น ตรงข้ามกับ forget (ลืม), ignore (เพิกเฉย)'},
+    q3:{t:"ประโยคสุดท้ายบอกชัดเลย: 'before university' = เป้าหมายของ Tom!",f:"อ่านประโยคสุดท้าย: 'He wants to improve his writing skills before university.'"},
+    q4:{t:'"They practice writing every day." — Subject+Verb+Object ถูกต้องสมบูรณ์!',f:'A: ผสม tense (read+enjoy) · B: He ต้องใช้ doesn\'t · D: "am study" ผิด → am studying'},
+    q5:{t:'ประโยคสมบูรณ์ = Subject (My name) + Verb (is) + ข้อมูล ครบทุกส่วน!',f:'ต้องเขียนประโยคสมบูรณ์ มี Subject + Verb เสมอ ไม่ใช่แค่ชื่อล่อยๆ'},
+    q6:{t:'Skimming = อ่านเร็วเพื่อจับภาพรวมใน 30 วิ เหมาะที่สุด!',f:'Skimming ใช้เมื่ออยากรู้ภาพรวมเร็วๆ · Scanning ใช้หาข้อมูลเฉพาะ'},
+    q7:{t:'"after running five kilometres" + "could not walk" = เหนื่อยมาก = exhausted!',f:'บริบทบอกชัดว่าวิ่ง 5 กม. และเดินต่อไม่ไหว = exhausted = เหนื่อยมาก'},
+    q8:{t:'"She" = he/she/it → ต้องเติม -s ที่ verb = "goes" (Present Simple)',f:'Subject = She (3rd person singular) → Verb ต้องเติม -s = goes ไม่ใช่ go'},
+    q9:{t:'ประโยคสุดท้ายตอบตรงๆ: "The more you read, the better you understand the world"',f:'ตอบอยู่ในประโยคสุดท้ายของ passage โดยตรง'},
+    q10:{t:'S + V + O = Subject + Verb + Object = โครงสร้างพื้นฐานภาษาอังกฤษ! เช่น "She likes music."',f:'โครงสร้างภาษาอังกฤษ = S+V+O เสมอ เช่น "She (S) likes (V) music (O)."'},
+  };
+  return fb[qid]?fb[qid][correct?'t':'f']:'';
+}
+
+function showResults(){
+  const total=Object.values(scores).reduce((a,b)=>a+(b||0),0);
+  document.getElementById('scoreNum').textContent=total;
+  let emoji,msg;
+  if(total===10){emoji='🏆';msg='Perfect score! เก่งมากเลย! มีพื้นฐานดีมาก พร้อมสำหรับทุกคาบที่จะตามมา 💯';}
+  else if(total>=8){emoji='🌟';msg='ยอดเยี่ยม! รู้พื้นฐานดีมาก ส่วนที่พลาดเราจะเรียนด้วยกันในคาบต่อๆ ไป!';}
+  else if(total>=6){emoji='👍';msg='ดีมาก! มีพื้นฐานอยู่แล้ว คาบต่อไปจะช่วยเสริมให้แข็งแกร่งขึ้น!';}
+  else if(total>=4){emoji='📚';msg='ยังมีหลายส่วนที่ต้องพัฒนา แต่ไม่ต้องกังวล! คาบนี้เราจะเริ่มต้นด้วยกัน!';}
+  else{emoji='💪';msg='ไม่เป็นไรเลย! คาบนี้เริ่มต้นจากพื้นฐาน เราจะค่อยๆ สร้างทักษะขึ้นมาด้วยกัน!';}
+  document.getElementById('resultEmoji').textContent=emoji;
+  document.getElementById('resultMsg').textContent=msg;
+}
+</script>
+</body>
+</html>
